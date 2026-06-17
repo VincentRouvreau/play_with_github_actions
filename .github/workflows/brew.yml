@@ -1,0 +1,18 @@
+name: some brew commands
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-14
+    name: Build wheels for Python ${{ matrix.python-version }}
+    steps:
+      - name: Check dependencies
+        run: |
+          brew --version
+          brew update || echo "brew update failed, continuing..."
+          brew doctor || echo "brew doctor failed, continuing..."
+          brew config || echo "brew config failed, continuing..."
+          brew info gmp --json=v2  | jq '.formulae[] | .bottle[] '
+          brew fetch --bottle-tag=x86_64_ventura gmp
+          tar xf "`brew --cache --bottle-tag=x86_64_ventura gmp `"
