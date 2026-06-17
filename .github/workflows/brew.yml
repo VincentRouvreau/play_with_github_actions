@@ -10,6 +10,9 @@ jobs:
       - name: Check dependencies
         run: |
           brew --version
+          brew update || echo "brew update failed, continuing..."
+          brew upgrade || echo "brew upgrade failed, continuing..."
+          brew --version
           brew doctor || echo "brew doctor failed, continuing..."
           brew config || echo "brew config failed, continuing..."
           brew info gmp --json=v2  | jq '.formulae[] | .bottle[] '
