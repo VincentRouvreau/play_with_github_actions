@@ -10,9 +10,9 @@ OSX_VERSION='ventura'
 # Downloading
 mkdir deps-amd64
 cd deps-amd64
-brew fetch --bottle-tag=x86_64_$OSX_VERSION gmp mpfr
-tar xf "`brew --cache --bottle-tag=x86_64_$OSX_VERSION gmp `"
-tar xf "`brew --cache --bottle-tag=x86_64_$OSX_VERSION mpfr`"
+brew fetch --bottle-tag=$OSX_VERSION gmp mpfr
+tar xf "`brew --cache --bottle-tag=$OSX_VERSION gmp `"
+tar xf "`brew --cache --bottle-tag=$OSX_VERSION mpfr`"
 cd ..
 mkdir deps-arm64
 cd deps-arm64
