@@ -1,8 +1,6 @@
 name: pip packaging osx
 
-on:
-  release:
-    types: [published]
+on: [push, pull_request]
 
 env:
   MACOSX_DEPLOYMENT_TARGET: 14.0
